@@ -1,7 +1,14 @@
 Персональные финансы (Домашняя бухгалтерия на Yii2)
 ================================
 
-![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/screenshot.png)
+## Главное окно приложения
+![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/main.png)
+
+## Управление расходами
+![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/expense.png)
+
+## Управление пользователями
+![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/user.png)
 
 Приложение на стадии разработки и в данный момент НЕ РАБОТОСПОСОБНО! Пишу для себя, когда есть время и вдохновение...
 
