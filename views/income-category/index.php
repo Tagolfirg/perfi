@@ -1,16 +1,17 @@
 <?php
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\IncomeCategorySearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use yii\helpers\ArrayHelper;
 use app\classes\Caption;
 use app\models\Account;
 use app\models\User;
 use app\classes\GrowlCRUD;
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\IncomeCategorySearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->params['breadcrumbs'][] = Caption::SECTION_INCOME_CATEGORY;
 ?>
@@ -20,7 +21,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_INCOME_CATEGORY;
 
     <p><?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?></p>
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
@@ -57,5 +58,5 @@ $this->params['breadcrumbs'][] = Caption::SECTION_INCOME_CATEGORY;
                 ],
             ]);
             ?>
-            <?php Pjax::end(); ?>
+            <?php LoadingOverlayPjax::end(); ?>
 </div>

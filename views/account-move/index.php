@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
 use yii\helpers\ArrayHelper;
 use app\models\User;
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT_MOVE;
         <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
     </div>
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
 
     <?=
     GridView::widget([
@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT_MOVE;
                 ],
             ]);
             ?>
-            <?php Pjax::end(); ?>
+            <?php LoadingOverlayPjax::end(); ?>
         </div>
 
 

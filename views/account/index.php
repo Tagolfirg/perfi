@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\models\Account;
 use app\models\User;
 use app\classes\Caption;
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT;
 
     <p><?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?></p>
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
 
     <?=
     GridView::widget([
@@ -94,5 +94,5 @@ $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT;
                         ],
                     ]);
                     ?>
-                    <?php Pjax::end(); ?>
+                    <?php LoadingOverlayPjax::end(); ?>
 </div>

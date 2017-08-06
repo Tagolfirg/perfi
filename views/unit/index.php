@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
 use app\classes\GrowlCRUD;
 
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_UNIT;
 
     <p><?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?></p>
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
@@ -49,6 +49,6 @@ $this->params['breadcrumbs'][] = Caption::SECTION_UNIT;
             ]);
             ?>
 
-            <?php Pjax::end(); ?>
+            <?php LoadingOverlayPjax::end(); ?>
 
 </div>

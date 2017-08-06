@@ -1,8 +1,5 @@
 <?php
 
-//use miloschuman\highcharts\Highstock;
-//use yii\web\JsExpression;
-//use yii\bootstrap\Carousel;
 use yii\bootstrap\Collapse;
 use yii\bootstrap\ButtonDropdown;
 use yii\bootstrap\ButtonGroup;

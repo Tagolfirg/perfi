@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
 use yii\helpers\ArrayHelper;
 use app\models\User;
@@ -23,12 +23,9 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_TEMPLATE;
 
 <div class="expense-template-index">
 
-
-
-
     <p><?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?></p>
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
@@ -100,5 +97,5 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_TEMPLATE;
                 ],
             ]);
             ?>
-            <?php Pjax::end(); ?>
+            <?php LoadingOverlayPjax::end(); ?>
 </div>

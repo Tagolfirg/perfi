@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use app\classes\GridView;
-use yii\widgets\Pjax;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
 use app\classes\GrowlCRUD;
 
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_CATEGORY;
 
 <div class="expense-category-index">
 
-    <?php Pjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
     <p>
         <?= Html::a(Caption::ACTION_CREATE_CURRENT, ['create', 'parent_id' => $searchModel->parent_id], ['class' => 'btn btn-success', 'data-pjax' => 0]) ?>
     </p>
@@ -101,5 +101,5 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_CATEGORY;
                         ],
                     ]);
                     ?>
-                    <?php Pjax::end(); ?>
+                    <?php LoadingOverlayPjax::end(); ?>
 </div>
