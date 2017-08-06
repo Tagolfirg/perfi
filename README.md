@@ -10,6 +10,9 @@
 ## Управление пользователями
 ![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/user.png)
 
+## На мобильном устройстве
+![alt tag](https://github.com/TimurMelnikov/yii2-perfi/blob/master/my_files/images/mobile.jpg)
+
 ## Приложение на стадии разработки и в данный момент НЕ РАБОТОСПОСОБНО! Пишу для себя, когда есть время и вдохновение...
 
 ## В планах: 
