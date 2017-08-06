@@ -5,13 +5,16 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DatePicker;
-use timurmelnikov\widgets\ShowLoading;
 use app\classes\Caption;
 use kartik\money\MaskMoney;
+use timurmelnikov\widgets\LoadingOverlayAsset;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\CurrencyExchange */
 /* @var $form yii\widgets\ActiveForm */
+
+LoadingOverlayAsset::register($this);
+
 ?>
 
 <div class="currency-exchange-form">
@@ -64,7 +67,7 @@ use kartik\money\MaskMoney;
 $message_error_name_currency = Caption::MESSAGE_ERROR_NAME_CURRENCY;
 $message_error_get_currency = Caption::MESSAGE_ERROR_GET_CURRENCY;
 
-echo ShowLoading::widget(['loadingType' => 1]);
+//echo ShowLoading::widget(['loadingType' => 1]);
 $url = Url::toRoute('/currency-exchange/get-exchange');
 $script = <<<JS
 $('#get-exchange').click(function () {
@@ -72,9 +75,7 @@ $('#get-exchange').click(function () {
         alert('$message_error_name_currency');
         throw "";
     }
-    $('#w0').showLoading();
-
-    $.ajax({
+     $.ajax({
         type: 'GET',
         url: '$url' + '?currency_id=' + $('#currencyexchange-currency_id').val(),
         // dataType: 'jsonp',
@@ -82,16 +83,22 @@ $('#get-exchange').click(function () {
             $('#currencyexchange-number_units').val($.parseJSON(json).size[0]);
             $('#currencyexchange-official_exchange-disp').val($.parseJSON(json).rate[0]);
             $('#currencyexchange-official_exchange-disp').focus();
-   $('#w0').hideLoading();
         },
         error: function () {
-
-            $('#w0').hideLoading();
             alert('$message_error_get_currency');
         }
     });
-
 });
+
+    //Наложение jQuery LoadingOverlay на элемент с ID #p0, при отправке AJAX-запроса
+    $(document).ajaxSend(function(event, jqxhr, settings){
+        $("#w0").LoadingOverlay("show");
+    });
+    //Скрытие jQuery LoadingOverlay на элемент с ID #p0, после выполнения AJAX-запроса
+    $(document).ajaxComplete(function(event, jqxhr, settings){
+        $("#w0").LoadingOverlay("hide");
+    });
+
 JS;
 $this->registerJs($script);
 ?>

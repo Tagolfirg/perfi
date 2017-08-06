@@ -1,15 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;
-use yii\widgets\Pjax;
+use app\classes\GridView;
+use timurmelnikov\widgets\LoadingOverlayPjax;
 use \app\models\User;
 use app\classes\Caption;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
-
-timurmelnikov\widgets\LoadingOverlayAsset::register($this);
 
 $this->params['menuItems'] = [
     ['label' => 'Назад', 'url' => ['/user']],
@@ -19,7 +17,7 @@ $this->params['menuItems'] = [
 <div class="user-permission">
 
     <?php
-    Pjax::begin(['timeout' => 3000]);
+    LoadingOverlayPjax::begin(['timeout' => 3000]);
 
     //Чтобы обрабатывать заголовок через AJAX
 
@@ -30,6 +28,7 @@ $this->params['menuItems'] = [
 
     <?=
     GridView::widget([
+        //'condensed' => false,
         'dataProvider' => $dataProvider,
         'layout' => '{items}',
         'rowOptions' => function ($model) use ($user_model) {
@@ -87,7 +86,7 @@ $this->params['menuItems'] = [
                         ],
                     ]);
                     ?>
-                    <?php Pjax::end(); ?>
+                    <?php LoadingOverlayPjax::end(); ?>
 
                     <p>
 
@@ -96,35 +95,3 @@ $this->params['menuItems'] = [
 
 
 </div>
-
-
-
-
-
-
-
-<?php
-
-//Код на JavaScript (heredoc-синтаксис)
-$script = <<< JS
-
-    //Настройки (можно не использовать, тогда - все по умолчанию)
-    $.LoadingOverlaySetup({
-    });
-
-    //Наложение jQuery LoadingOverlay на элемент с ID #p0, при отправке AJAX-запроса
-    $(document).ajaxSend(function(event, jqxhr, settings){
-        $("#w0-container").LoadingOverlay("show");
-    });
-
-    //Скрытие jQuery LoadingOverlay на элемент с ID #p0, после выполнения AJAX-запроса
-    $(document).ajaxComplete(function(event, jqxhr, settings){
-        $("#w0-container").LoadingOverlay("hide");
-    });
-
-JS;
-
-//Подключение скрипта в представлении
-$this->registerJs($script, yii\web\View::POS_READY);
-
-?>

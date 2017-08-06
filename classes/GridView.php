@@ -30,7 +30,7 @@ class GridView extends \kartik\grid\GridView {
      * - `{pager}`: the pager. See [[renderPager()]].
      */
     public $layout = "{items}\n{summary}\n{pager}";
-    public $condensed = true;
+    // public $condensed = true;
     public $striped = false;
     public $hover = true;
 

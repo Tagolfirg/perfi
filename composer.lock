@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4da287fb25886bab1f8ba7133c2541f",
+    "content-hash": "833730f76449fc80b107205f3b9f1b50",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -2052,50 +2052,6 @@
                 "yii2"
             ],
             "time": "2017-05-26T11:02:28+00:00"
-        },
-        {
-            "name": "timurmelnikov/yii2-showloading",
-            "version": "0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/timurmelnikov/yii2-showloading.git",
-                "reference": "93a4639c1ae4070f1525f88186f5e48212d561d0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/timurmelnikov/yii2-showloading/zipball/93a4639c1ae4070f1525f88186f5e48212d561d0",
-                "reference": "93a4639c1ae4070f1525f88186f5e48212d561d0",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "timurmelnikov\\widgets\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Timur Melnikov",
-                    "email": "melnilovt@gmail.com"
-                }
-            ],
-            "description": "Yii2 расширение для подключения плагина jQuery showLoading",
-            "keywords": [
-                "ajax",
-                "jquery",
-                "showLoading",
-                "widget",
-                "yii2"
-            ],
-            "abandoned": "timurmelnikov/yii2-loading-overlay",
-            "time": "2017-05-30T14:25:12+00:00"
         },
         {
             "name": "yiisoft/yii2",

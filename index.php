@@ -1,4 +1,4 @@
 <?php
 
 //Это временная заглушка!!!
-header("location: /perfi/web/");
+header("location: /yii2-perfi/web/");
