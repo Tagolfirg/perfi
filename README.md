@@ -23,10 +23,10 @@
 
 Перед установкой, должен быть предварительно установлен и настроен Composer.
 
-1. Поместить папку yii2-perfi в корневую папку WEB сервера. Например, для XAMPP под Windows - в C:\xampp\htdocs, должно получиться так - C:\xampp\htdocs\yii2-perfi
+1. Поместить папку perfi в корневую папку WEB сервера. Например, для XAMPP под Windows - в C:\xampp\htdocs, должно получиться так - C:\xampp\htdocs\perfi
 
-2. Создать базу данных MySQL и накатить на нее дамп perfi.sql, который находится в папке C:\xampp\htdocs\yii2-perfi\my_files\sql
+2. Создать базу данных MySQL и накатить на нее дамп perfi.sql, который находится в папке C:\xampp\htdocs\perfi\my_files\sql
 
-3. Настроить в конфигурационном файле приложения C:\xampp\htdocs\yii2-perfi\config\db.php соединение с базой данных
+3. Настроить в конфигурационном файле приложения C:\xampp\htdocs\perfi\config\db.php соединение с базой данных
 
 4. Для установки Yii фреймворка и компонентов - выполнить команду composer update.
