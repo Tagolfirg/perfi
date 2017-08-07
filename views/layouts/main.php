@@ -28,7 +28,7 @@ AppAsset::register($this);
         <div class="wrap">
             <?php
             NavBar::begin([
-                'brandLabel' => Caption::SECTION_MAIN, //Yii::$app->params['nameShort'],
+                'brandLabel' => '<span class="glyphicon glyphicon-home"/>',//Caption::SECTION_MAIN,
                 //'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
