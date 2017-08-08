@@ -202,17 +202,29 @@ class Account extends \yii\db\ActiveRecord {
     }
 
     /**
-     * Возвращает  Кошельков пользователя и суммы в них
+     * Возвращает  Кошельки пользователя и суммы в них
      */
     public static function findAllAndCurrentSum() {
 
-        $sql = 'SELECT a.id AS id, CONCAT( a.name,  " - ", a.current_sum ) AS name
-                FROM {{%account}} a
-                WHERE a.state =0
-                AND a.user_id = ' . Yii::$app->user->identity->id
-                . ' ORDER BY a.name';
+        // $sql = 'SELECT a.id AS id, CONCAT( a.name,  " - ", a.current_sum ) AS name
+        //         FROM {{%account}} a
+        //         WHERE a.state =0
+        //         AND a.user_id = ' . Yii::$app->user->identity->id
+        //         . ' ORDER BY a.name';
 
-        return self::findBySql($sql)->all();
+
+            $rows = (new Query())
+                ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " - ", {{%account}}.current_sum) AS name'])
+                ->from('{{%account}}')
+                ->where([
+                    '{{%account}}.user_id' => Yii::$app->user->identity->id,
+                    '{{%account}}.state' => 0
+                    ])
+                ->orderBy('{{%account}}.name')
+                ->all();       
+
+        //return self::findBySql($sql)->all();
+        return $rows;
     }
 
 
