@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\classes\Caption;
 use app\classes\SetFlashCRUD;
+use yii\db\Query;
 
 /**
  * This is the model class for table "{{%account}}".
@@ -128,24 +129,76 @@ class Account extends \yii\db\ActiveRecord {
      */
     public static function findAllAndUserName($show = Self::SHOW_PERMISSION) {
         if ($show == Self::SHOW_USER) {
-            $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, db1_user us
-            where a.user_id = us.id  and a.state = 0
-            and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
+
+            // $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, {{%user}} us
+            // where a.user_id = us.id  and a.state = 0
+            // and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
+
+            $rows = (new Query())
+                ->select(['{{%account}}.id', '{{%account}}.name'])
+                ->from('{{%account}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%account}}.user_id')
+                ->where([
+                    '{{%account}}.user_id' => Yii::$app->user->identity->id,
+                    '{{%account}}.state' => 0
+                    ])
+                ->orderBy('{{%user}}.username', '{{%account}}.name')
+                ->all();
+
         } else if ($show == Self::SHOW_ALL) {
-            $sql = 'SELECT a.id as id, concat(a.name, " (", us.username, ")") as name
-            FROM {{%account}} a, db1_user us
-            where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
+           
+            // $sql = 'SELECT a.id as id, concat(a.name, " (", us.username, ")") as name
+            // FROM {{%account}} a, {{%user}} us
+            // where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
+
+            $rows = (new Query())
+                ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " (", {{%user}}.username, ")") AS name'])
+                ->from('{{%account}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%account}}.user_id')
+                ->where([
+                    '{{%account}}.state' => 0
+                    ])
+                ->orderBy('{{%user}}.username', '{{%account}}.name')
+                ->all();
+
         } else
         if (Yii::$app->user->can('show_all')) {
-            $sql = 'SELECT  a.id as id, concat(a.name, " (", us.username, ")") as name
-            FROM {{%account}} a, db1_user us
-            where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
+
+            // $sql = 'SELECT  a.id as id, concat(a.name, " (", us.username, ")") as name
+            // FROM {{%account}} a, {{%user}} us
+            // where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
+
+            $rows = (new Query())
+                ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " (", {{%user}}.username, ")") AS name'])
+                ->from('{{%account}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%account}}.user_id')
+                ->where([
+                    '{{%account}}.state' => 0
+                    ])
+                ->orderBy('{{%user}}.username', '{{%account}}.name')
+                ->all();
+
+
         } else {
-            $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, db1_user us
-            where a.user_id = us.id
-            and a.state = 0  and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
+
+            // $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, {{%user}} us
+            // where a.user_id = us.id
+            // and a.state = 0  and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
+
+            $rows = (new Query())
+                ->select(['{{%account}}.id', '{{%account}}.name'])
+                ->from('{{%account}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%account}}.user_id')
+                ->where([
+                    '{{%account}}.user_id' => Yii::$app->user->identity->id,
+                    '{{%account}}.state' => 0
+                    ])
+                ->orderBy('{{%user}}.username', '{{%account}}.name')
+                ->all();
+
         }
-        return self::findBySql($sql)->all();
+        //return self::findBySql($sql)->all();
+        return $rows;
     }
 
     /**
