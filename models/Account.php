@@ -130,10 +130,6 @@ class Account extends \yii\db\ActiveRecord {
     public static function findAllAndUserName($show = Self::SHOW_PERMISSION) {
         if ($show == Self::SHOW_USER) {
 
-            // $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, {{%user}} us
-            // where a.user_id = us.id  and a.state = 0
-            // and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
-
             $rows = (new Query())
                 ->select(['{{%account}}.id', '{{%account}}.name'])
                 ->from('{{%account}}')
@@ -146,10 +142,6 @@ class Account extends \yii\db\ActiveRecord {
                 ->all();
 
         } else if ($show == Self::SHOW_ALL) {
-           
-            // $sql = 'SELECT a.id as id, concat(a.name, " (", us.username, ")") as name
-            // FROM {{%account}} a, {{%user}} us
-            // where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
 
             $rows = (new Query())
                 ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " (", {{%user}}.username, ")") AS name'])
@@ -164,10 +156,6 @@ class Account extends \yii\db\ActiveRecord {
         } else
         if (Yii::$app->user->can('show_all')) {
 
-            // $sql = 'SELECT  a.id as id, concat(a.name, " (", us.username, ")") as name
-            // FROM {{%account}} a, {{%user}} us
-            // where a.user_id = us.id  and a.state = 0 order by us.username, a.name';
-
             $rows = (new Query())
                 ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " (", {{%user}}.username, ")") AS name'])
                 ->from('{{%account}}')
@@ -181,10 +169,6 @@ class Account extends \yii\db\ActiveRecord {
 
         } else {
 
-            // $sql = 'SELECT a.id as id, a.name FROM {{%account}} a, {{%user}} us
-            // where a.user_id = us.id
-            // and a.state = 0  and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
-
             $rows = (new Query())
                 ->select(['{{%account}}.id', '{{%account}}.name'])
                 ->from('{{%account}}')
@@ -197,7 +181,7 @@ class Account extends \yii\db\ActiveRecord {
                 ->all();
 
         }
-        //return self::findBySql($sql)->all();
+
         return $rows;
     }
 
@@ -205,13 +189,6 @@ class Account extends \yii\db\ActiveRecord {
      * Возвращает  Кошельки пользователя и суммы в них
      */
     public static function findAllAndCurrentSum() {
-
-        // $sql = 'SELECT a.id AS id, CONCAT( a.name,  " - ", a.current_sum ) AS name
-        //         FROM {{%account}} a
-        //         WHERE a.state =0
-        //         AND a.user_id = ' . Yii::$app->user->identity->id
-        //         . ' ORDER BY a.name';
-
 
             $rows = (new Query())
                 ->select(['{{%account}}.id', 'CONCAT({{%account}}.name, " - ", {{%account}}.current_sum) AS name'])
@@ -223,7 +200,6 @@ class Account extends \yii\db\ActiveRecord {
                 ->orderBy('{{%account}}.name')
                 ->all();       
 
-        //return self::findBySql($sql)->all();
         return $rows;
     }
 

@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\classes\Caption;
 use app\classes\SetFlashCRUD;
+use yii\db\Query;
 
 /**
  * This is the model class for table "{{%income_category}}".
@@ -83,16 +84,29 @@ class IncomeCategory extends \yii\db\ActiveRecord {
      * Возвращает список Пользователей и их Категорий
      */
     public static function findAllAndUserName() {
+   
         if (Yii::$app->user->can('show_all')) {
-            $sql = 'SELECT  a.id as id, concat(a.name, " (", us.username, ")") as name
-            FROM {{%income_category}} a, db1_user us
-            where a.user_id = us.id  order by us.username, a.name';
+ 
+            $rows = (new Query())
+                ->select(['{{%income_category}}.id', 'CONCAT({{%income_category}}.name, " (", {{%user}}.username, ")") AS name'])
+                ->from('{{%income_category}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%income_category}}.user_id')
+                ->where([ ])
+                ->orderBy('{{%user}}.username', '{{%income_category}}.name')
+                ->all();
+
         } else {
-            $sql = 'SELECT a.id as id, a.name FROM {{%income_category}} a, db1_user us
-            where a.user_id = us.id
-            and a.user_id = ' . Yii::$app->user->identity->id . ' order by us.username, a.name';
+
+            $rows = (new Query())
+                ->select(['{{%income_category}}.id', '{{%income_category}}.name'])
+                ->from('{{%income_category}}')
+                ->join('JOIN', '{{%user}}', '{{%user}}.id = {{%income_category}}.user_id')
+                ->where([ '{{%income_category}}.user_id' => Yii::$app->user->identity->id, ])
+                ->orderBy('{{%user}}.username', '{{%income_category}}.name')
+                ->all();          
         }
-        return self::findBySql($sql)->all();
+
+        return $rows;
     }
 
 }
