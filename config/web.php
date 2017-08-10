@@ -56,6 +56,23 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
+
+    // Глобальная конфигурация виджетов
+    'container' => [
+        'definitions' => [
+                timurmelnikov\widgets\LoadingOverlayPjax::class => [
+                    'zIndex' => 100,
+                    //'timeout' => 3000
+                ],
+                app\classes\GridView::class => [ //Конечно, кудет kartik\grid\GridView
+                    //'condensed' => true,
+                    //'layout' => "{items}\n{summary}\n{pager}"
+                ],
+            
+        ],
+    ],
+    // Глобальная конфигурация виджетов (конец)
+
     'modules' => [
         'gridview' => [
             'class' => '\kartik\grid\Module'
