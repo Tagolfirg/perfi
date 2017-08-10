@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE;
         <?php //echo $this->render('_search', ['model' => $searchModel]);  ?>
     </div>
 
-    <?php LoadingOverlayPjax::begin(['timeout' => 3000]); ?>
+    <?php LoadingOverlayPjax::begin(['timeout' => 3000, 'zIndex'=>10]); ?>
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
