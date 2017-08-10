@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use app\classes\GridView;
+use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\models\Account;
 use app\models\User;

@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use app\classes\GridView;
+use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use yii\helpers\ArrayHelper;
 use app\classes\Caption;

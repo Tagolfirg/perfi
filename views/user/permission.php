@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use app\classes\GridView;
+use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
-use \app\models\User;
+use app\models\User;
 use app\classes\Caption;
 
 /* @var $this yii\web\View */

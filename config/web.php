@@ -64,9 +64,13 @@ $config = [
                     'zIndex' => 100,
                     //'timeout' => 3000
                 ],
-                app\classes\GridView::class => [ //Конечно, кудет kartik\grid\GridView
+                kartik\grid\GridView::class => [
+                    'responsiveWrap' => false,
+                    'export' => false,
+                    'layout' => "{items}\n{summary}\n{pager}",
                     //'condensed' => true,
-                    //'layout' => "{items}\n{summary}\n{pager}"
+                    'striped' => false,
+                    'hover' => true,
                 ],
             
         ],

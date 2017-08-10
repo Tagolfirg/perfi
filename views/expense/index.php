@@ -3,7 +3,7 @@
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use app\classes\GridView;
+use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
 use app\models\User;
