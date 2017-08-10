@@ -170,7 +170,8 @@ AppAsset::register($this);
 
         <footer class="footer">
             <div class="container">
-                <p class="pull-left">&copy; Timur Melnikov <?= date('Y') ?></p>
+                <p class="pull-left">&copy; <?=Yii::$app->params['authorName']?> <?= date('Y') ?> <a href="<?=Yii::$app->params['sourceCode']?>" target="blank_">GitHub</a></p>
+                
                 <p class="pull-right"><?= Yii::powered() ?></p>
             </div>
         </footer>
