@@ -16,6 +16,16 @@ use yii\widgets\Pjax;
     <div class="body-content">
         <div class="col-md-3 col-lg-3">
             <img class="visible-md visible-lg" src="<?= Yii::$app->request->baseUrl . '/images/logo.png'; ?>" style='width: 100%' alt="<?= Yii::$app->name; ?>">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><?= Caption::SECTION_SHOPPING_LIST_MY ?></div>
+                </div> 
+                <div class="panel-body">
+             
+                </div>
+            </div>
+             
             <div class="visible-md visible-lg panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title"><?= Caption::SECTION_MY_BALANCE ?></div>
@@ -36,6 +46,7 @@ use yii\widgets\Pjax;
                 </div>
                 <?php Pjax::end(); ?>                     
             </div>
+
         </div>
 
 

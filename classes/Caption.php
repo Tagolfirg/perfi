@@ -54,6 +54,7 @@ class Caption {
     const SECTION_USER_PASSWORD = 'Изменение пароля пользователя';
     const SECTION_USER_PERMISSION = 'Назначение ролей пользователю';
     const SECTION_SHOPPING_LIST = 'Списки покупок';
+    const SECTION_SHOPPING_LIST_MY = 'Мои списки покупок';
     const SECTION_MY_BALANCE = 'Мои остатки';
     const SECTION_CONTROL_BALANCE = 'Контроль баланса';
     

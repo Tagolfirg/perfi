@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<h1>toodo/index</h1>
+<h1>shopping-list/index</h1>
 <h2>Раздел еще не реализован</h2>
 
 

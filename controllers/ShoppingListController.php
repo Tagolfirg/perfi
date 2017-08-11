@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-class ToodoController extends \yii\web\Controller
+class ShoppingListController extends \yii\web\Controller
 {
     public function actionIndex()
     {
