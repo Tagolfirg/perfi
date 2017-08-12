@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Авг 06 2017 г., 08:14
+-- Время создания: Авг 12 2017 г., 08:47
 -- Версия сервера: 10.1.24-MariaDB
 -- Версия PHP: 7.1.6
 
@@ -93,12 +93,12 @@ CREATE TABLE `db1_auth_assignment` (
 
 INSERT INTO `db1_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('admin', '1', 1439889952),
-('admin', '2', 1501999762),
+('admin', '2', 1502015598),
+('admin', '3', 1502009953),
 ('show_all', '1', 1439889951),
-('show_all', '2', 1501999764),
-('show_all', '3', 1458139514),
+('show_all', '2', 1502340560),
 ('user', '1', 1439889953),
-('user', '2', 1501999757),
+('user', '2', 1502000866),
 ('user', '3', 1458139511),
 ('user', '8', 1458569740);
 
@@ -232,7 +232,10 @@ INSERT INTO `db1_currency_exchange` (`id`, `currency_id`, `start_date`, `number_
 (45, 1, '2016-05-19', 100, '2525.7239'),
 (46, 1, '2017-08-06', 100, '2584.2893'),
 (47, 2, '2017-08-06', 100, '3067.0345'),
-(48, 3, '2017-08-06', 10, '4.2837');
+(48, 3, '2017-08-06', 10, '4.2837'),
+(49, 1, '2017-08-12', 100, '2569.5711'),
+(50, 2, '2017-08-12', 100, '3023.1004'),
+(51, 3, '2017-08-12', 10, '4.2693');
 
 -- --------------------------------------------------------
 
@@ -425,7 +428,9 @@ INSERT INTO `db1_expense_template` (`id`, `cost`, `unit_id`, `count_unit`, `expe
 (45, '150.00', 1, '1.00', 89, '', 3, 2, 'Интернет'),
 (47, '3.00', 10, '1.00', 94, 'Проезд в маршрутке', 3, 3, 'Транспорт'),
 (48, '175.00', 1, '1.00', 164, 'Пополнение карты Метро на месяц', 2, 3, 'Пополнение карты Метро'),
-(49, '350.00', 1, '1.00', 122, '', 2, 1, 'Ресторан');
+(49, '350.00', 1, '1.00', 122, '', 2, 1, 'Ресторан'),
+(50, '30.00', 1, '1.00', 141, '', 2, 6, 'Vodafone (МТС)'),
+(51, '3.00', 10, '1.00', 94, 'Проезд в маршрутке', 2, 3, 'Транспорт');
 
 -- --------------------------------------------------------
 
@@ -521,6 +526,31 @@ CREATE TABLE `db1_setting_parametr` (
 INSERT INTO `db1_setting_parametr` (`id`, `name`) VALUES
 (1, 'Количество записей в гриде'),
 (2, 'Счет по умолчанию');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `db1_shopping_list`
+--
+
+CREATE TABLE `db1_shopping_list` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL COMMENT 'Наименование',
+  `user_from` int(11) NOT NULL COMMENT 'От пользователя',
+  `user_to` int(11) NOT NULL COMMENT 'Пользователю'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Списки покупок';
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `db1_shopping_list_item`
+--
+
+CREATE TABLE `db1_shopping_list_item` (
+  `id` int(11) NOT NULL,
+  `shopping_list_id` int(11) NOT NULL COMMENT 'Список покупок',
+  `description` varchar(200) NOT NULL COMMENT 'Описание'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -704,6 +734,21 @@ ALTER TABLE `db1_setting_parametr`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `db1_shopping_list`
+--
+ALTER TABLE `db1_shopping_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_user_from` (`user_from`) USING BTREE,
+  ADD KEY `idx_user_to` (`user_to`) USING BTREE;
+
+--
+-- Индексы таблицы `db1_shopping_list_item`
+--
+ALTER TABLE `db1_shopping_list_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_shopping_list_id` (`shopping_list_id`) USING BTREE;
+
+--
 -- Индексы таблицы `db1_unit`
 --
 ALTER TABLE `db1_unit`
@@ -742,7 +787,7 @@ ALTER TABLE `db1_currency`
 -- AUTO_INCREMENT для таблицы `db1_currency_exchange`
 --
 ALTER TABLE `db1_currency_exchange`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT для таблицы `db1_expense`
 --
@@ -757,7 +802,7 @@ ALTER TABLE `db1_expense_category`
 -- AUTO_INCREMENT для таблицы `db1_expense_template`
 --
 ALTER TABLE `db1_expense_template`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT для таблицы `db1_income`
 --
@@ -778,6 +823,16 @@ ALTER TABLE `db1_setting`
 --
 ALTER TABLE `db1_setting_parametr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `db1_shopping_list`
+--
+ALTER TABLE `db1_shopping_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `db1_shopping_list_item`
+--
+ALTER TABLE `db1_shopping_list_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `db1_unit`
 --
@@ -876,6 +931,19 @@ ALTER TABLE `db1_income_category`
 ALTER TABLE `db1_setting`
   ADD CONSTRAINT `db1_setting_ibfk_1` FOREIGN KEY (`setting_parametr_id`) REFERENCES `db1_setting_parametr` (`id`),
   ADD CONSTRAINT `db1_setting_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `db1_user` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `db1_shopping_list`
+--
+ALTER TABLE `db1_shopping_list`
+  ADD CONSTRAINT `db1_shopping_list_ibfk_1` FOREIGN KEY (`user_from`) REFERENCES `db1_user` (`id`),
+  ADD CONSTRAINT `db1_shopping_list_ibfk_2` FOREIGN KEY (`user_to`) REFERENCES `db1_user` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `db1_shopping_list_item`
+--
+ALTER TABLE `db1_shopping_list_item`
+  ADD CONSTRAINT `db1_shopping_list_item_ibfk_1` FOREIGN KEY (`shopping_list_id`) REFERENCES `db1_shopping_list` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
