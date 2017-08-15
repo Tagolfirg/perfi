@@ -15,6 +15,7 @@
         "requirements.php": true,
         "LICENSE.md": true,
         "yii": true,
-        "yii.bat": true
+        "yii.bat": true,
+        "web/assets": true
     }
 }
