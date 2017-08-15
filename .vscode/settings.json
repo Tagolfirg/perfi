@@ -1,24 +1,20 @@
 {
     "files.exclude": {
-        ".vscode":true,
+        ".vscode": true,
         ".idea": true,
         "assets": true,
         "commands": true,
-        "migrations":true,
-        "mail":true,
+        "migrations": true,
+        "mail": true,
         "runtime": true,
-        "tests":true,
-        "vendor":true,
-        ".bowerrc":true,
-        "composer.lock":true,
-        "index.php":true,
-        "requirements.php":true,
-        "LICENSE.md":true,
-        "yii":true,
-        "yii.bat":true
-        
-        
-        
-
+        "tests": true,
+        "vendor": true,
+        ".bowerrc": true,
+        "composer.lock": true,
+        "index.php": true,
+        "requirements.php": true,
+        "LICENSE.md": true,
+        "yii": true,
+        "yii.bat": true
     }
 }
