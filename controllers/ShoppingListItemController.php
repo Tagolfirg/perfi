@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\ShoppingList;
-use app\models\ShoppingListSearch;
+use app\models\ShoppingListItem;
+use app\models\ShoppingListItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ShoppingListController implements the CRUD actions for ShoppingList model.
+ * ShoppingListItemController implements the CRUD actions for ShoppingListItem model.
  */
-class ShoppingListController extends Controller
+class ShoppingListItemController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Lists all ShoppingList models.
+     * Lists all ShoppingListItem models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ShoppingListSearch();
+        $searchModel = new ShoppingListItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Displays a single ShoppingList model.
+     * Displays a single ShoppingListItem model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Creates a new ShoppingList model.
+     * Creates a new ShoppingListItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ShoppingList();
+        $model = new ShoppingListItem();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Updates an existing ShoppingList model.
+     * Updates an existing ShoppingListItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Deletes an existing ShoppingList model.
+     * Deletes an existing ShoppingListItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ShoppingListController extends Controller
     }
 
     /**
-     * Finds the ShoppingList model based on its primary key value.
+     * Finds the ShoppingListItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ShoppingList the loaded model
+     * @return ShoppingListItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ShoppingList::findOne($id)) !== null) {
+        if (($model = ShoppingListItem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
