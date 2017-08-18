@@ -21,7 +21,7 @@ class SetFlashCRUD extends Behavior {
 
     public function afterDelete() {
 
-        // Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
+         //Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
     }
 
     public function afterCreate() {

@@ -5,14 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\ShoppingListItem;
 use app\models\ShoppingListItemSearch;
-use app\classes\AppController;
+use app\classes\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ShoppingListItemController implements the CRUD actions for ShoppingListItem model.
  */
-class ShoppingListItemController extends AppController
+class ShoppingListItemController extends Controller
 {
     /**
      * @inheritdoc

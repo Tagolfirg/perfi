@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Income;
 use app\models\IncomeSearch;
-use app\classes\AppController;
+use app\classes\Controller;
 use yii\web\NotFoundHttpException;
 use app\classes\VerbFilter;
 use app\classes\Caption;
@@ -15,7 +15,7 @@ use app\models\Account;
 /**
  * IncomeController implements the CRUD actions for Income model.
  */
-class IncomeController extends AppController {
+class IncomeController extends Controller {
 
     public function behaviors() {
         return [

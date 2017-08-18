@@ -3,12 +3,11 @@
 namespace app\classes;
 
 use Yii;
-use yii\web\Controller;
 
 /**
  * Общие настройки Контроллеров.
  */
-class AppController extends Controller {
+class Controller extends \yii\web\Controller {
 
     /**
      * Является ли  текущий пользователь владельйем  записи?

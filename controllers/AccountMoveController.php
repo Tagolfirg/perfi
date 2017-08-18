@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\AccountMove;
 use app\models\AccountMoveSearch;
-use app\classes\AppController;
+use app\classes\Controller;
 use yii\web\NotFoundHttpException;
 use app\classes\VerbFilter;
 use app\classes\Caption;
@@ -14,7 +14,7 @@ use yii\filters\AccessControl;
 /**
  * AccountMoveController implements the CRUD actions for AccountMove model.
  */
-class AccountMoveController extends AppController {
+class AccountMoveController extends Controller {
 
     public function behaviors() {
         return [

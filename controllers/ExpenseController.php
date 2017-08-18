@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Expense;
 use app\models\ExpenseSearch;
-use app\classes\AppController;
+use app\classes\Controller;
 use yii\web\NotFoundHttpException;
 use app\classes\VerbFilter;
 use app\classes\Caption;
@@ -16,7 +16,7 @@ use yii\helpers\Html;
 /**
  * ExpenseController implements the CRUD actions for Expense model.
  */
-class ExpenseController extends AppController {
+class ExpenseController extends Controller {
 
     public function behaviors() {
         return [
