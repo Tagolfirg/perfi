@@ -76,6 +76,7 @@ class UserController extends Controller {
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
@@ -95,6 +96,7 @@ class UserController extends Controller {
         $model->updated_at = date_timestamp_get(date_create());
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
@@ -112,6 +114,7 @@ class UserController extends Controller {
     public function actionDelete($id) {
         try {
             $this->findModel($id)->delete();
+            Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
             return $this->redirect(['index']);
         } catch (\Exception $ex) {
             if ($ex->getCode() == 23000) {

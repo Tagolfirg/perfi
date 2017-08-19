@@ -8,6 +8,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\classes\Caption;
+use app\classes\GrowlCRUD;
 
 AppAsset::register($this);
 ?>
@@ -23,6 +24,9 @@ AppAsset::register($this);
         <?php $this->head() ?>
     </head>
     <body>
+
+        <?= GrowlCRUD::widget([]); ?> <!-- Вывод сообщений Growl -->
+        
         <?php $this->beginBody() ?>
 
         <div class="wrap">

@@ -8,7 +8,6 @@ use yii\helpers\ArrayHelper;
 use app\models\IncomeCategory;
 use app\models\Account;
 use app\models\User;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\IncomeSearch */
@@ -17,8 +16,6 @@ use app\classes\GrowlCRUD;
 
 $this->params['breadcrumbs'][] = Caption::SECTION_INCOME;
 ?>
-
-<?= GrowlCRUD::widget([]); ?>
 
 <div class="income-index">
 

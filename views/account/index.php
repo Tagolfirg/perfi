@@ -7,7 +7,6 @@ use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\models\Account;
 use app\models\User;
 use app\classes\Caption;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AccountSearch */
@@ -17,7 +16,6 @@ use app\classes\GrowlCRUD;
 $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT;
 ?>
 
-<?= GrowlCRUD::widget([]); ?>
 
 <div class="account-index">
 

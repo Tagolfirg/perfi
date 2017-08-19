@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UnitSearch */
@@ -13,7 +12,7 @@ use app\classes\GrowlCRUD;
 
 $this->params['breadcrumbs'][] = Caption::SECTION_UNIT;
 ?>
-<?= GrowlCRUD::widget([]); ?>
+
 <div class="unit-index">
 
     <p><?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?></p>

@@ -65,7 +65,7 @@ class ExpenseCategoryController extends Controller {
         $model = new ExpenseCategory();
         $model->parent_id = $parent_id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
+            Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
             return $this->redirect(['index', 'parent_id' => $model->parent_id]);
         } else {
             return $this->render('create', [
@@ -89,8 +89,8 @@ class ExpenseCategoryController extends Controller {
 
             //Обновляем поле path
             $model->updatePathAll();
-            //Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
 
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index', 'parent_id' => $model->parent_id]);
         } else {
             return $this->render('update', [
@@ -109,6 +109,7 @@ class ExpenseCategoryController extends Controller {
 
         try {
             $this->findModel($id)->delete();
+            Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
             return $this->redirect(['index', 'parent_id' => $parent_id]);
         } catch (\Exception $ex) {
             if ($ex->getCode() == 23000) {

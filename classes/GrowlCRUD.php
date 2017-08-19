@@ -9,13 +9,11 @@ use kartik\widgets\Growl;
 /**
  * Виджет Growl для CRUD.
  */
-class GrowlCRUD extends Widget {
+class GrowlCRUD extends Widget
+{
 
-    public function init() {
-        
-    }
-
-    public function run() {
+    public function run()
+    {
 
         if (Yii::$app->session->getFlash('delete-error')) {
             return Growl::widget([
@@ -66,50 +64,49 @@ class GrowlCRUD extends Widget {
         }
 
 
-//CRUD
-        // if (Yii::$app->session->getFlash('delete-success')) {
-        //     return Growl::widget([
-        //                 'title' => Caption::FLASH_TITLE_SUCCESS,
-        //                 'body' => Yii::$app->session->getFlash('delete-success'),
-        //                 'pluginOptions' => [
-        //                     'showProgressbar' => true,
-        //                 ],
-        //                 'showSeparator' => true,
-        //                 'type' => Growl::TYPE_SUCCESS,
-        //                 'icon' => 'glyphicon glyphicon-ok',
-        //     ]);
-        // }
+        //CRUD
+        if (Yii::$app->session->getFlash('delete-success')) {
+            return Growl::widget([
+                        'title' => Caption::FLASH_TITLE_SUCCESS,
+                        'body' => Yii::$app->session->getFlash('delete-success'),
+                        'pluginOptions' => [
+                            'showProgressbar' => true,
+                        ],
+                        'showSeparator' => true,
+                        'type' => Growl::TYPE_SUCCESS,
+                        'icon' => 'glyphicon glyphicon-ok',
+            ]);
+        }
 
-        // if (Yii::$app->session->getFlash('create-success')) {
-        //     return Growl::widget([
-        //                 'title' => Caption::FLASH_TITLE_SUCCESS,
-        //                 'body' => Yii::$app->session->getFlash('create-success'),
-        //                 'pluginOptions' => [
-        //                     'showProgressbar' => true,
-        //                 ],
-        //                 'showSeparator' => true,
-        //                 'type' => Growl::TYPE_SUCCESS,
-        //                 'icon' => 'glyphicon glyphicon-ok',
-        //     ]);
-        // }
+        if (Yii::$app->session->getFlash('create-success')) {
+            return Growl::widget([
+                        'title' => Caption::FLASH_TITLE_SUCCESS,
+                        'body' => Yii::$app->session->getFlash('create-success'),
+                        'pluginOptions' => [
+                            'showProgressbar' => true,
+                        ],
+                        'showSeparator' => true,
+                        'type' => Growl::TYPE_SUCCESS,
+                        'icon' => 'glyphicon glyphicon-ok',
+            ]);
+        }
 
-        // if (Yii::$app->session->getFlash('update-success')) {
-        //     return Growl::widget([
-        //                 'title' => Caption::FLASH_TITLE_SUCCESS,
-        //                 'body' => Yii::$app->session->getFlash('update-success'),
-        //                 'pluginOptions' => [
-        //                     'showProgressbar' => true,
-        //                 ],
-        //                 'showSeparator' => true,
-        //                 'type' => Growl::TYPE_SUCCESS,
-        //                 'icon' => 'glyphicon glyphicon-ok',
-        //     ]);
-        // }
-//CRUD(конец)
+        if (Yii::$app->session->getFlash('update-success')) {
+            return Growl::widget([
+                        'title' => Caption::FLASH_TITLE_SUCCESS,
+                        'body' => Yii::$app->session->getFlash('update-success'),
+                        'pluginOptions' => [
+                            'showProgressbar' => true,
+                        ],
+                        'showSeparator' => true,
+                        'type' => Growl::TYPE_SUCCESS,
+                        'icon' => 'glyphicon glyphicon-ok',
+            ]);
+        }
+        //CRUD(конец)
 
 
         //Удаляем все Flash-сообщения. На всякий случай...
         Yii::$app->session->removeAllFlashes();
     }
-
 }

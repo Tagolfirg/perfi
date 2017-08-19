@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\models\User;
-use app\classes\GrowlCRUD;
 use app\classes\Caption;
 
 /* @var $this yii\web\View */
@@ -14,12 +13,6 @@ use app\classes\Caption;
 
 $this->params['breadcrumbs'][] = Caption::SECTION_USER;
 ?>
-
-
-
-<?= GrowlCRUD::widget([]); ?>
-
-
 
 <div class="user-index">
 

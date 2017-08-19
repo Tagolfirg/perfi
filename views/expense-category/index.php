@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use app\classes\Caption;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ExpenseCategorySearch */
@@ -13,11 +12,6 @@ use app\classes\GrowlCRUD;
 
 $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_CATEGORY;
 ?>
-
-
-<?= GrowlCRUD::widget([]); ?>
-
-
 
 
 <?php

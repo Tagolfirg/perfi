@@ -7,7 +7,6 @@ use app\classes\Caption;
 use yii\helpers\ArrayHelper;
 use app\models\User;
 use app\models\Account;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AccountMoveSearch */
@@ -17,7 +16,6 @@ use app\classes\GrowlCRUD;
 $this->params['breadcrumbs'][] = Caption::SECTION_ACCOUNT_MOVE;
 ?>
 
-<?= GrowlCRUD::widget([]); ?>
 
 <div class="account-move-index">
 

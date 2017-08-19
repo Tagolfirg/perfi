@@ -74,6 +74,7 @@ class AccountMoveController extends Controller {
         $model->date_oper = date('Y-m-d');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -92,6 +93,7 @@ class AccountMoveController extends Controller {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [

@@ -8,6 +8,8 @@ use app\models\ShoppingListItemSearch;
 use app\classes\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\classes\Caption;
+
 
 /**
  * ShoppingListItemController implements the CRUD actions for ShoppingListItem model.
@@ -102,7 +104,7 @@ class ShoppingListItemController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
         return $this->redirect(['index']);
     }
 

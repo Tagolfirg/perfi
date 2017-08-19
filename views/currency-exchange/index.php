@@ -5,7 +5,6 @@ use kartik\grid\GridView;
 use timurmelnikov\widgets\LoadingOverlayPjax;
 use yii\helpers\ArrayHelper;
 use app\classes\Caption;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CurrencyExchangeSearch */
@@ -16,7 +15,6 @@ $this->params['breadcrumbs'][] = Caption::SECTION_CURRENCY_EXCHANGE;
 
 ?>
 
-<?= GrowlCRUD::widget([]); ?>
 
 <div class="unit-index">
 

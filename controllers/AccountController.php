@@ -14,9 +14,11 @@ use yii\filters\AccessControl;
 /**
  * AccountController implements the CRUD actions for Account model.
  */
-class AccountController extends Controller {
+class AccountController extends Controller
+{
 
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
 
 
@@ -40,11 +42,11 @@ class AccountController extends Controller {
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
-                    if ($this->isUserOwner()) {
-                        return true;
-                    }
-                    return false;
-                }
+                            if ($this->isUserOwner()) {
+                                return true;
+                            }
+                            return false;
+                        }
                     ],
                 ],
             ],
@@ -55,7 +57,8 @@ class AccountController extends Controller {
      * Lists all Account models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new AccountSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -70,13 +73,15 @@ class AccountController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Account();
         $model->user_id = Yii::$app->user->identity->id;
         $model->current_sum = 0.00;
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -91,13 +96,13 @@ class AccountController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id) {
-
-
+    public function actionUpdate($id)
+    {
 
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -112,16 +117,17 @@ class AccountController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id) {
-
+    public function actionDelete($id)
+    {
         try {
             $this->findModel($id)->delete();
+            Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
             return $this->redirect(['index']);
         } catch (\Exception $ex) {
             if ($ex->getCode() == 23000) {
                 Yii::$app->getSession()->setFlash('delete-error', Caption::FLASH_DELETE_ERROR_RELATION);
             }
-            return $this->redirect(['index']);
+            //return $this->redirect(['index']);
         }
     }
 
@@ -132,12 +138,12 @@ class AccountController extends Controller {
      * @return Account the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Account::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException(Caption::ERROR_NOT_FOUND);
         }
     }
-
 }

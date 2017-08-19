@@ -9,6 +9,7 @@ use app\models\Account;
 use app\models\User;
 use app\classes\Caption;
 use kartik\money\MaskMoney;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Income */
 /* @var $form yii\widgets\ActiveForm */

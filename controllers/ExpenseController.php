@@ -104,9 +104,10 @@ class ExpenseController extends Controller {
                 $model->unit_id = 1; //В настройках должно задаваться!
                 $model->count_unit = 1;
                 $model->continue = 1;
-                //Yii::$app->getSession()->setFlash('created', 'Доход успешно создан...');
+                Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
                 return $this->render('create', ['model' => $model,]);
             } else {
+                Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
                 return $this->redirect(['index']);
             }
         } else {
@@ -132,6 +133,7 @@ class ExpenseController extends Controller {
         //Для Ajax валидации (конец)
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [

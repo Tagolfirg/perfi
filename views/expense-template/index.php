@@ -9,7 +9,6 @@ use app\models\User;
 use app\models\Unit;
 use app\models\ExpenseCategory;
 use kartik\select2\Select2;
-use app\classes\GrowlCRUD;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ExpenseTemplateSearch */
@@ -18,8 +17,6 @@ use app\classes\GrowlCRUD;
 
 $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_TEMPLATE;
 ?>
-
-<?= GrowlCRUD::widget([]); ?>
 
 <div class="expense-template-index">
 

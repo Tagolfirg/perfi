@@ -18,9 +18,8 @@ use kartik\select2\Select2;
 $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE;
 ?>
 
+
 <div class="expense-index">
-
-
 
     <p>
         <?= Html::a(Caption::ACTION_CREATE, ['create'], ['class' => 'btn btn-success']) ?>

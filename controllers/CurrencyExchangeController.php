@@ -64,6 +64,7 @@ class CurrencyExchangeController extends Controller {
         $model->number_units = 100;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -82,6 +83,7 @@ class CurrencyExchangeController extends Controller {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('update-success', Caption::FLASH_UPDATE_SUCCESS);
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -98,7 +100,7 @@ class CurrencyExchangeController extends Controller {
      */
     public function actionDelete($id) {
         $this->findModel($id)->delete();
-
+        Yii::$app->getSession()->setFlash('delete-success', Caption::FLASH_DELETE_SUCCESS);
         return $this->redirect(['index']);
     }
 
