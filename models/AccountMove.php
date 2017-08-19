@@ -5,7 +5,6 @@ namespace app\models;
 use Yii;
 use app\classes\Caption;
 use app\models\Account;
-use app\classes\SetFlashCRUD;
 
 /**
  * This is the model class for table "{{%account_move}}".
@@ -35,8 +34,6 @@ class AccountMove extends \yii\db\ActiveRecord {
 
     public function behaviors() {
         return [
-            // Сообщения действий CRUD
-            SetFlashCRUD::className(),
         ];
     }
 

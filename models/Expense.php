@@ -6,7 +6,6 @@ use Yii;
 use app\classes\Caption;
 use app\models\ExpenseCategory;
 use app\models\Account;
-use app\classes\SetFlashCRUD;
 
 /**
  * This is the model class for table "{{%expense}}".
@@ -39,8 +38,6 @@ class Expense extends \yii\db\ActiveRecord {
 
     public function behaviors() {
         return [
-            // Сообщения действий CRUD
-            SetFlashCRUD::className(),
         ];
     }
 

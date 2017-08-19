@@ -4,7 +4,6 @@ namespace app\models;
 
 use Yii;
 use app\classes\Caption;
-use app\classes\SetFlashCRUD;
 use yii\db\Query;
 
 /**
@@ -30,8 +29,6 @@ class IncomeCategory extends \yii\db\ActiveRecord {
 
     public function behaviors() {
         return [
-            // Сообщения действий CRUD
-            SetFlashCRUD::className(),
         ];
     }
 

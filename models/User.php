@@ -6,7 +6,6 @@ use yii\base\NotSupportedException;
 use yii\rbac\DbManager;
 use Yii;
 use app\classes\Caption;
-use app\classes\SetFlashCRUD;
 
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 
@@ -23,8 +22,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
 
     public function behaviors() {
         return [
-            // Сообщения действий CRUD
-            SetFlashCRUD::className(),
         ];
     }
 

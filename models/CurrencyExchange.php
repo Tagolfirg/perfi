@@ -4,7 +4,6 @@ namespace app\models;
 
 use Yii;
 use app\classes\Caption;
-use app\classes\SetFlashCRUD;
 
 /**
  * This is the model class for table "{{%currency_exchange}}".
@@ -26,8 +25,6 @@ class CurrencyExchange extends \yii\db\ActiveRecord {
 
     public function behaviors() {
         return [
-            // Сообщения действий CRUD
-            SetFlashCRUD::className(),
         ];
     }
 
