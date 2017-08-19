@@ -63,8 +63,6 @@ class GrowlCRUD extends Widget
             ]);
         }
 
-
-        //CRUD
         if (Yii::$app->session->getFlash('delete-success')) {
             return Growl::widget([
                         'title' => Caption::FLASH_TITLE_SUCCESS,
@@ -103,10 +101,5 @@ class GrowlCRUD extends Widget
                         'icon' => 'glyphicon glyphicon-ok',
             ]);
         }
-        //CRUD(конец)
-
-
-        //Удаляем все Flash-сообщения. На всякий случай...
-        Yii::$app->session->removeAllFlashes();
     }
 }
