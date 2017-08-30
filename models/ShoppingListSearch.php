@@ -19,7 +19,7 @@ class ShoppingListSearch extends ShoppingList
     {
         return [
             [['id', 'user_from', 'user_to'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'date_list'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class ShoppingListSearch extends ShoppingList
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'date_list' => $this->date_list,
             'user_from' => $this->user_from,
             'user_to' => $this->user_to,
         ]);

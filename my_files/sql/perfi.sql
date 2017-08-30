@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Авг 12 2017 г., 08:47
+-- Время создания: Авг 30 2017 г., 12:41
 -- Версия сервера: 10.1.24-MariaDB
 -- Версия PHP: 7.1.6
 
@@ -41,13 +41,12 @@ CREATE TABLE `db1_account` (
 --
 
 INSERT INTO `db1_account` (`id`, `name`, `current_sum`, `state`, `user_id`) VALUES
-(1, 'Карточка FidoBank', '1487.50', 0, 2),
+(1, 'Карточка FidoBank', '1902.00', 0, 2),
 (2, 'Карточка Приват', '0.00', 1, 2),
-(3, 'Наличные', '1724.88', 0, 2),
+(3, 'Наличные', '2004.56', 0, 2),
 (4, 'Карточка Приват', '80.00', 0, 3),
 (5, 'Наличные', '700.00', 0, 3),
-(6, 'Наличные', '100.00', 0, 8),
-(7, 'Карточка UniCredit', '54.05', 0, 2);
+(6, 'Наличные', '100.00', 0, 8);
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,8 @@ INSERT INTO `db1_account_move` (`id`, `account_from`, `account_to`, `move_sum`, 
 (4, 1, 2, '22.00', '2015-07-25', 2, ''),
 (5, 1, 5, '100.00', '2015-07-25', 2, ''),
 (6, 2, 3, '85.21', '2015-07-28', 2, ''),
-(7, 4, 3, '10.00', '2015-07-30', 3, '');
+(7, 4, 3, '10.00', '2015-07-30', 3, ''),
+(8, 1, 3, '0.01', '2017-08-19', 2, '3333');
 
 -- --------------------------------------------------------
 
@@ -93,12 +93,13 @@ CREATE TABLE `db1_auth_assignment` (
 
 INSERT INTO `db1_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('admin', '1', 1439889952),
-('admin', '2', 1502015598),
-('admin', '3', 1502009953),
+('admin', '2', 1502280268),
+('admin', '3', 1504074051),
 ('show_all', '1', 1439889951),
-('show_all', '2', 1502340560),
+('show_all', '2', 1502371960),
+('show_all', '3', 1458139514),
 ('user', '1', 1439889953),
-('user', '2', 1502000866),
+('user', '2', 1502179449),
 ('user', '3', 1458139511),
 ('user', '8', 1458569740);
 
@@ -227,15 +228,8 @@ INSERT INTO `db1_currency_exchange` (`id`, `currency_id`, `start_date`, `number_
 (40, 2, '2016-02-24', 100, '2996.2691'),
 (41, 3, '2016-02-24', 10, '3.5308'),
 (42, 1, '2016-03-10', 100, '2618.2756'),
-(43, 2, '2016-03-10', 100, '2873.0338'),
 (44, 3, '2016-03-10', 10, '3.6175'),
-(45, 1, '2016-05-19', 100, '2525.7239'),
-(46, 1, '2017-08-06', 100, '2584.2893'),
-(47, 2, '2017-08-06', 100, '3067.0345'),
-(48, 3, '2017-08-06', 10, '4.2837'),
-(49, 1, '2017-08-12', 100, '2569.5711'),
-(50, 2, '2017-08-12', 100, '3023.1004'),
-(51, 3, '2017-08-12', 10, '4.2693');
+(49, 1, '2017-08-19', 100, '2549.0401');
 
 -- --------------------------------------------------------
 
@@ -266,7 +260,6 @@ INSERT INTO `db1_expense` (`id`, `cost`, `unit_id`, `count_unit`, `expense_categ
 (44, '3.00', 2, '700.00', 161, '', '2015-07-24', 2, 3),
 (45, '10.00', 2, '200.00', 99, '', '2015-07-24', 2, 3),
 (46, '150.00', 1, '1.00', 89, '', '2015-07-27', 2, 3),
-(47, '350.00', 1, '1.00', 122, '', '2015-07-27', 2, 1),
 (48, '40.00', 2, '800.00', 150, '', '2015-07-27', 2, 1),
 (50, '10.00', 2, '200.00', 99, 'Хек', '2015-07-28', 2, 3),
 (51, '150.00', 1, '1.00', 89, '', '2015-07-28', 2, 2),
@@ -275,18 +268,20 @@ INSERT INTO `db1_expense` (`id`, `cost`, `unit_id`, `count_unit`, `expense_categ
 (54, '3.00', 10, '1.00', 94, 'Проезд в маршрутке', '2015-07-28', 2, 3),
 (55, '12.50', 5, '1.00', 83, '', '2015-07-29', 2, 1),
 (56, '13.99', 5, '1.00', 83, 'Сильпо', '2015-07-30', 3, 4),
-(57, '3.00', 10, '1.00', 94, 'Проезд в маршрутке (по городу)', '2015-08-03', 2, 3),
-(58, '0.05', 2, '1000.00', 160, '', '2015-12-20', 2, 1),
-(59, '7.50', 2, '1000.00', 161, '', '2015-12-20', 2, 3),
+(59, '7.50', 2, '1000.00', 161, 'truytryrt', '2015-12-20', 2, 3),
 (60, '46.50', 5, '1.00', 143, 'NIVEA', '2016-02-24', 2, 1),
 (61, '36.99', 11, '3.00', 149, 'Гурманика', '2016-02-24', 2, 1),
-(62, '4.50', 4, '1.00', 60, 'Вафли Артек', '2016-02-24', 2, 1),
-(63, '56.99', 2, '500.00', 157, 'Докторская', '2016-02-25', 2, 1),
 (64, '4.00', 10, '1.00', 164, '', '2016-02-26', 8, 6),
 (65, '3.00', 10, '1.00', 166, '', '2016-02-26', 8, 6),
 (66, '30.00', 1, '1.00', 141, '', '2016-02-26', 8, 6),
-(67, '175.00', 1, '1.00', 164, 'Пополнение карты Метро на месяц', '2016-03-10', 2, 3),
-(68, '144.00', 1, '1.00', 89, '', '2017-08-05', 2, 3);
+(69, '0.01', 1, '1.00', 112, '21312', '2017-08-19', 2, 1),
+(70, '0.01', 1, '1.00', 93, 'etrtert', '2017-08-19', 2, 1),
+(71, '1.11', 1, '1.00', 143, '23423', '2017-08-19', 2, 3),
+(72, '0.22', 1, '1.00', 72, '321423423', '2017-08-19', 2, 1),
+(73, '0.66', 1, '1.00', 143, '4545', '2017-08-19', 2, 3),
+(74, '4.44', 1, '1.00', 93, '34343343', '2017-08-19', 2, 3),
+(75, '33.33', 1, '1.00', 196, '32423423', '2017-08-19', 2, 3),
+(76, '3.00', 10, '1.00', 94, 'Проезд в маршрутке (по городу)555', '2017-08-19', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -398,7 +393,8 @@ INSERT INTO `db1_expense_category` (`id`, `parent_id`, `path`, `name`) VALUES
 (195, 173, '0.60.173', 'Пиво (без алк.)'),
 (196, 98, '0.60.98', 'Сало'),
 (197, 98, '0.60.98', 'Бекон'),
-(198, 98, '0.60.98', 'Консервы мясные');
+(198, 98, '0.60.98', 'Консервы мясные'),
+(200, 0, '0', '4324234');
 
 -- --------------------------------------------------------
 
@@ -423,14 +419,17 @@ CREATE TABLE `db1_expense_template` (
 --
 
 INSERT INTO `db1_expense_template` (`id`, `cost`, `unit_id`, `count_unit`, `expense_category_id`, `description`, `user_id`, `account_id`, `name`) VALUES
-(41, '144.00', 1, '1.00', 89, '', 2, 3, 'Интернет'),
-(43, '3.00', 10, '1.00', 94, 'Проезд в маршрутке (по городу)', 2, 3, 'Проезд в маршрутке'),
+(43, '3.00', 10, '1.00', 94, 'Проезд в маршрутке (по городу)555', 2, 3, 'Проезд в маршрутке'),
 (45, '150.00', 1, '1.00', 89, '', 3, 2, 'Интернет'),
 (47, '3.00', 10, '1.00', 94, 'Проезд в маршрутке', 3, 3, 'Транспорт'),
 (48, '175.00', 1, '1.00', 164, 'Пополнение карты Метро на месяц', 2, 3, 'Пополнение карты Метро'),
-(49, '350.00', 1, '1.00', 122, '', 2, 1, 'Ресторан'),
-(50, '30.00', 1, '1.00', 141, '', 2, 6, 'Vodafone (МТС)'),
-(51, '3.00', 10, '1.00', 94, 'Проезд в маршрутке', 2, 3, 'Транспорт');
+(50, '7.50', 2, '1000.00', 161, '', 2, 3, 'Картошка'),
+(51, '3.00', 10, '1.00', 166, '', 2, 6, 'Трамвай'),
+(52, '4.00', 10, '1.00', 164, '', 2, 6, 'Метро'),
+(54, '36.99', 11, '3.00', 149, 'Гурманика', 2, 1, 'Йогурт'),
+(55, '0.05', 2, '1.01', 143, '', 2, 1, 'fhf'),
+(56, '0.01', 1, '1.00', 93, '', 2, 1, 'Зубная шетка'),
+(57, '0.22', 1, '1.00', 72, '321423423', 2, 1, 'Гигиена');
 
 -- --------------------------------------------------------
 
@@ -456,7 +455,11 @@ INSERT INTO `db1_income` (`id`, `amount`, `income_category_id`, `date_oper`, `us
 (6, '600.00', 12, '2015-07-24', 3, 5),
 (8, '1000.00', 6, '2015-07-24', 2, 2),
 (9, '1500.00', 3, '2015-07-28', 2, 1),
-(10, '2000.00', 6, '2015-07-28', 2, 3);
+(10, '2000.00', 6, '2015-07-28', 2, 3),
+(11, '1.11', 4, '2017-08-19', 2, 1),
+(12, '2.22', 4, '2017-08-19', 2, 1),
+(13, '0.21', 4, '2017-08-19', 2, 3),
+(14, '0.44', 4, '2017-08-19', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -476,12 +479,34 @@ CREATE TABLE `db1_income_category` (
 --
 
 INSERT INTO `db1_income_category` (`id`, `user_id`, `name`, `account_id`) VALUES
-(3, 2, 'Зарплата', 1),
+(3, 2, 'Зарплата', 3),
 (4, 2, 'Аванс', 1),
 (5, 2, 'Конверт', 2),
 (6, 2, 'Калым', 2),
 (7, 3, 'Аванс', 4),
 (12, 3, 'Зарплата', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `db1_migration`
+--
+
+CREATE TABLE `db1_migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `db1_migration`
+--
+
+INSERT INTO `db1_migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1502693288),
+('m170812_064905_shopping_list', 1502693298),
+('m170812_064906_Relations', 1502693299),
+('m170812_064936_shopping_list_item', 1502693299),
+('m170812_064937_Relations', 1502693299);
 
 -- --------------------------------------------------------
 
@@ -535,10 +560,21 @@ INSERT INTO `db1_setting_parametr` (`id`, `name`) VALUES
 
 CREATE TABLE `db1_shopping_list` (
   `id` int(11) NOT NULL,
+  `date_list` date NOT NULL COMMENT 'Дата листа',
   `name` varchar(50) NOT NULL COMMENT 'Наименование',
   `user_from` int(11) NOT NULL COMMENT 'От пользователя',
   `user_to` int(11) NOT NULL COMMENT 'Пользователю'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Списки покупок';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `db1_shopping_list`
+--
+
+INSERT INTO `db1_shopping_list` (`id`, `date_list`, `name`, `user_from`, `user_to`) VALUES
+(5, '2017-08-07', 'Список № 1', 2, 3),
+(6, '2017-08-30', 'Список АТБ', 3, 2),
+(7, '2017-08-30', 'Купить на пикник', 8, 2),
+(8, '2017-08-30', 'Список покупок от 30.08.2017', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -607,7 +643,8 @@ INSERT INTO `db1_user` (`id`, `created_at`, `updated_at`, `fullname`, `username`
 (1, 1429777037, 1438175197, 'Супер пользователь системы', 'root', '0ZIG7OZCKEOR7JyE20g0Rh-R_NVlipex', NULL, '$2y$13$NVfh/naxh8QWQtMeTeumjOzcqGaGm6uNHwXpbzyjj5rWJejqyI4I.', NULL, 'admin@ukr.net', 0),
 (2, 1429777037, 1438175211, 'Мельников Тимур Викторович', 'timur', 'b8HKw5Lt3NqQQxw1Ly1L2jkH2N7B1ZR4', NULL, '$2y$13$KFS/bKU0RZjBDv49ePch2OlepQqDGlEPmRhxZEoSYwGwBEHRXl0pu', NULL, 'timur@ukr.net', 0),
 (3, 1429777037, 1438238903, 'Мельников Беатриса Леонидовна', 'beata', 'xotK69FcZqF5LKRrK4bNGawddzqAzSSQ', NULL, '$2y$13$vXZ2pkOxCm4xL9u27Uks9eaWHtzDgqMW144lmgVOgDjXk3w3utK0m', NULL, 'beata@ukr.net', 0),
-(8, 1429777037, 1438175252, 'Морозова Даша', 'dasha', 'd4-Xo9XcUIptBQZz4aw4KNphHOgk0YV6', NULL, '$2y$13$hwH2t9ZTVz3WjzPth08LAuw1KIk/0wEGCnZzhwCu2DZmwWSQ8fDce', NULL, 'dasha@ukr.net', 0);
+(8, 1429777037, 1438175252, 'Морозова Даша', 'dasha', 'd4-Xo9XcUIptBQZz4aw4KNphHOgk0YV6', NULL, '$2y$13$hwH2t9ZTVz3WjzPth08LAuw1KIk/0wEGCnZzhwCu2DZmwWSQ8fDce', NULL, 'dasha@ukr.net', 0),
+(10, 1503133882, 1503135307, 'укцкцук', 'цукцукцу', '4cqInJ9mIJh7-h03X5qcREqKI0dPC6h4', NULL, '$2y$13$RCBQq91EVfNfIfhbbVahKOYxA/oM54UEYmkxnmrf7DdVkEWNW9UCO', NULL, 'rrrr5555r@gdfgd.rr', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -719,6 +756,12 @@ ALTER TABLE `db1_income_category`
   ADD KEY `idx_account_id` (`account_id`) USING BTREE;
 
 --
+-- Индексы таблицы `db1_migration`
+--
+ALTER TABLE `db1_migration`
+  ADD PRIMARY KEY (`version`);
+
+--
 -- Индексы таблицы `db1_setting`
 --
 ALTER TABLE `db1_setting`
@@ -738,15 +781,15 @@ ALTER TABLE `db1_setting_parametr`
 --
 ALTER TABLE `db1_shopping_list`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_user_from` (`user_from`) USING BTREE,
-  ADD KEY `idx_user_to` (`user_to`) USING BTREE;
+  ADD KEY `idx_user_from` (`user_from`),
+  ADD KEY `idx_user_to` (`user_to`);
 
 --
 -- Индексы таблицы `db1_shopping_list_item`
 --
 ALTER TABLE `db1_shopping_list_item`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_shopping_list_id` (`shopping_list_id`) USING BTREE;
+  ADD KEY `idx_shopping_list_id` (`shopping_list_id`);
 
 --
 -- Индексы таблицы `db1_unit`
@@ -772,12 +815,12 @@ ALTER TABLE `db1_user`
 -- AUTO_INCREMENT для таблицы `db1_account`
 --
 ALTER TABLE `db1_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `db1_account_move`
 --
 ALTER TABLE `db1_account_move`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `db1_currency`
 --
@@ -787,27 +830,27 @@ ALTER TABLE `db1_currency`
 -- AUTO_INCREMENT для таблицы `db1_currency_exchange`
 --
 ALTER TABLE `db1_currency_exchange`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT для таблицы `db1_expense`
 --
 ALTER TABLE `db1_expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT для таблицы `db1_expense_category`
 --
 ALTER TABLE `db1_expense_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 --
 -- AUTO_INCREMENT для таблицы `db1_expense_template`
 --
 ALTER TABLE `db1_expense_template`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT для таблицы `db1_income`
 --
 ALTER TABLE `db1_income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT для таблицы `db1_income_category`
 --
@@ -827,7 +870,7 @@ ALTER TABLE `db1_setting_parametr`
 -- AUTO_INCREMENT для таблицы `db1_shopping_list`
 --
 ALTER TABLE `db1_shopping_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `db1_shopping_list_item`
 --
@@ -842,7 +885,7 @@ ALTER TABLE `db1_unit`
 -- AUTO_INCREMENT для таблицы `db1_user`
 --
 ALTER TABLE `db1_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -936,14 +979,14 @@ ALTER TABLE `db1_setting`
 -- Ограничения внешнего ключа таблицы `db1_shopping_list`
 --
 ALTER TABLE `db1_shopping_list`
-  ADD CONSTRAINT `db1_shopping_list_ibfk_1` FOREIGN KEY (`user_from`) REFERENCES `db1_user` (`id`),
-  ADD CONSTRAINT `db1_shopping_list_ibfk_2` FOREIGN KEY (`user_to`) REFERENCES `db1_user` (`id`);
+  ADD CONSTRAINT `fk_db1_shopping_list_user_from` FOREIGN KEY (`user_from`) REFERENCES `db1_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_db1_shopping_list_user_to` FOREIGN KEY (`user_to`) REFERENCES `db1_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `db1_shopping_list_item`
 --
 ALTER TABLE `db1_shopping_list_item`
-  ADD CONSTRAINT `db1_shopping_list_item_ibfk_1` FOREIGN KEY (`shopping_list_id`) REFERENCES `db1_shopping_list` (`id`);
+  ADD CONSTRAINT `fk_db1_shopping_list_item_shopping_list_id` FOREIGN KEY (`shopping_list_id`) REFERENCES `db1_shopping_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

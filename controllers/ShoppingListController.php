@@ -65,6 +65,8 @@ class ShoppingListController extends Controller
     public function actionCreate()
     {
         $model = new ShoppingList();
+        $model->date_list = date('Y-m-d');
+        $model->name = 'Список покупок от '. date('d.m.Y');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //Yii::$app->getSession()->setFlash('create-success', Caption::FLASH_CREATE_SUCCESS);
