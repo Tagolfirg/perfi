@@ -170,9 +170,9 @@ use yii\widgets\Pjax;
 
 
             //Список покупок
-            $toodo = ButtonGroup::widget([
+            $shopping_list = ButtonGroup::widget([
                         'buttons' => [
-                            Html::a(Caption::ACTION_IN_SECTION, ['/toodo'], [
+                            Html::a(Caption::ACTION_IN_SECTION, ['/shopping-list'], [
                                 'class' => 'btn btn-success',
                                 'title' => Caption::ACTION_IN_SECTION,
                                 'options' => [
@@ -180,7 +180,7 @@ use yii\widgets\Pjax;
                                 ]
                                     ]
                             ),
-                            Html::a(Caption::ACTION_CREATE, ['/toodo'], [
+                            Html::a(Caption::ACTION_CREATE, ['/shopping-list/create'], [
                                 'class' => 'btn btn-primary',
                                 'title' => Caption::ACTION_CREATE,
                                 'options' => [
@@ -218,8 +218,8 @@ use yii\widgets\Pjax;
                         'content' => $account_move,
                     ],
                         [
-                        'label' => '<img src="' . Yii::$app->request->baseUrl . '/images/section/list.png' . ' "width="100" "alt="" > ' . Caption::SECTION_SHOPPING_LIST,
-                        'content' => $toodo,
+                        'label' => '<img src="' . Yii::$app->request->baseUrl . '/images/section/shopping-list.png' . ' "width="100" "alt="" > ' . Caption::SECTION_SHOPPING_LIST,
+                        'content' => $shopping_list,
                     ],
                 ]
             ]);
