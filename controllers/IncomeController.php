@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use app\classes\VerbFilter;
 use app\classes\Caption;
 use yii\filters\AccessControl;
-use app\models\Account;
+//use app\models\Account;
 
 /**
  * IncomeController implements the CRUD actions for Income model.

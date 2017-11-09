@@ -63,7 +63,7 @@ class Unit extends \yii\db\ActiveRecord {
      * @return \yii\db\ActiveQuery
      */
     public function getExpensetemps() {
-        return $this->hasMany(Expensetemp::className(), ['unit_id' => 'id']);
+        return $this->hasMany(ExpenseTemplate::className(), ['unit_id' => 'id']);
     }
 
 }

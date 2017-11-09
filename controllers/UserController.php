@@ -10,9 +10,8 @@ use yii\web\NotFoundHttpException;
 use app\classes\VerbFilter;
 use app\models\AuthItem;
 use yii\data\ActiveDataProvider;
-use app\classes\Messages;
 use app\classes\Caption;
-use yii\filters\AccessControl;
+//use yii\filters\AccessControl;
 
 /**
  * UserController implements the CRUD actions for User model.

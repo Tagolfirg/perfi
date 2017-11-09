@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\classes\VerbFilter;
+//use app\classes\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\classes\Caption;

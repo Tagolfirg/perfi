@@ -161,20 +161,20 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface {
         return $this->hasMany(Account::className(), ['user_id' => 'id']);
     }
 
-    public function getSettings() {
-        return $this->hasMany(Setting::className(), ['user_id' => 'id']);
-    }
+//     public function getSettings() {
+//         return $this->hasMany(Setting::className(), ['user_id' => 'id']);
+//     }
 
     public function getMoves() {
-        return $this->hasMany(Move::className(), ['user_id' => 'id']);
+        return $this->hasMany(AccountMove::className(), ['user_id' => 'id']);
     }
 
     public function getExpensetemps() {
-        return $this->hasMany(Expensetemp::className(), ['user_id' => 'id']);
+        return $this->hasMany(ExpenseTemplate::className(), ['user_id' => 'id']);
     }
 
     public function getCategoryincs() {
-        return $this->hasMany(Categoryinc::className(), ['user_id' => 'id']);
+        return $this->hasMany(IncomeCategory::className(), ['user_id' => 'id']);
     }
 
 }
