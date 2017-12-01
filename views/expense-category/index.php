@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = Caption::SECTION_EXPENSE_CATEGORY;
                 'filter' => TRUE,
                 'format' => 'html',
                 'value' => function($data) {
-                    return ($data->getCountSubitems($data->id) != 0) ? Html::a($data->name, ['/expense-category', 'parent_id' => $data->id]) . ' <small>(' . $data->getCountSubitems($data->id) . ')</small>' : Html::a($data->name, ['/expense-category', 'parent_id' => $data->id]);
+                    return ($data->getCountSubitems($data->id) != 0) ? Html::a($data->name, ['/expense-category', 'parent_id' => $data->id]) . '<span class="badge pull-right">' . $data->getCountSubitems($data->id) . '</span>' : Html::a($data->name, ['/expense-category', 'parent_id' => $data->id]);
                 },
                     //'options' => ['width' => '42%']
                     ],
